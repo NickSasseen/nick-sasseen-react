@@ -1,16 +1,16 @@
-import { AppBar as MuiAppBar, Box, Container, IconButton, Toolbar, Button, Drawer, List, ListItem, ListItemButton, ListItemText, ListItemIcon } from '@mui/material';
-import { DarkMode, DeveloperMode, LightMode } from '@mui/icons-material';
+import { AppBar as MuiAppBar, Box, Chip, Divider, Container, IconButton, Toolbar, Button, Drawer, List, ListItem, ListItemButton, ListItemText, ListItemIcon } from '@mui/material';
+import { DarkMode, DeveloperMode, LightMode, Movie } from '@mui/icons-material';
 import MenuIcon from "@mui/icons-material/Menu";
 import React, { useState } from 'react';
 
 const pages = ["Movies"];
 
-const AppBar = ({changeColorTheme, themeIsDark}) => {
+const AppBar = ({ changeColorTheme, themeIsDark }) => {
     const [drawerIsOpen, setDrawerIsOpen] = useState(false);
 
     const toggleDrawer = () => {
         setDrawerIsOpen(!drawerIsOpen);
-      }
+    }
 
     const lightDarkIcon =
         <Box sx={{ flexGrow: 0 }}>
@@ -77,13 +77,17 @@ const AppBar = ({changeColorTheme, themeIsDark}) => {
                 >
                     <div>
                         <List>
+                            <Divider>
+                                <Chip label="My personal projects" />
+                            </Divider>
                             {pages.map((text, index) => (
                                 <ListItem key={text} disablePadding>
                                     <ListItemButton>
                                         <ListItemIcon>
                                             {
-                                                // PUT ICONS HERE
+
                                             }
+                                            <Movie />
                                         </ListItemIcon>
                                         <ListItemText primary={text} />
                                     </ListItemButton>

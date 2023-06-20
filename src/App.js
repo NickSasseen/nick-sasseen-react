@@ -4,6 +4,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import React, { useState, useMemo } from 'react';
 import AppBar from './components/layout/AppBar';
+import { Outlet, BrowserRouter, Routes, Route } from 'react-router-dom';
+import Movies from './pages/Movies';
+import NoPage from './pages/404';
 
 function App() {
   const [colorThemeIsDark, setColorThemeIsDark] = useState(useMediaQuery('(prefers-color-scheme: dark)'));
@@ -23,7 +26,16 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Movies />}>
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
       <AppBar changeColorTheme={changeColorTheme} themeIsDark={colorThemeIsDark} />
+
+      <Outlet />
     </ThemeProvider>
   );
 }
